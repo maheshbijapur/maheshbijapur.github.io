@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mahesh Bijapur | Senior iOS Engineer & SDK Architect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Mahesh Bijapur – Senior iOS Engineer, SDK Architect, and Mobile Platform Developer." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius: 14px;
+      --shadow-soft: 0 18px 45px rgba(15,23,42,0.75);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    /* NAVBAR */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .nav-left {
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.5fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-main {
+      padding: 20px 20px 24px;
+      border-radius: 20px;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 55%),
+                  linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,0.85);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.0rem, 3vw, 2.6rem);
+      margin-bottom: 6px;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 16px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-meta span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      color: #0b1120;
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(56,189,248,0.4);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.85);
+      color: var(--muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-footnote {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-side {
+      padding: 18px 16px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top, rgba(56,189,248,0.18), transparent 60%),
+                  #020617;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: 0 14px 34px rgba(15,23,42,0.85);
+    }
+
+    .hero-side-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero-side-item {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-side-item span {
+      color: var(--text);
+    }
+
+    /* SECTION LAYOUT */
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1.0rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* CARDS */
+    .card {
+      background: rgba(15,23,42,0.95);
+      border-radius: var(--radius);
+      border: 1px solid rgba(31,41,55,0.9);
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 6px;
+      font-size: 0.76rem;
+    }
+
+    .tag {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--muted);
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .card-body ul {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+
+    .card-body li {
+      margin-bottom: 3px;
+    }
+
+    /* GRID */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">MAHESH B • iOS / SDK</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          <span>Senior iOS Engineer · SDK Architect</span>
+        </div>
+        <h1>Building reliable <span class="hero-title-highlight">iOS & SDK platforms</span> at scale.</h1>
+        <p class="hero-subtitle">
+          I’m Mahesh, a Senior iOS Engineer with 10+ years of experience designing SDKs, mobile platforms
+          and fintech-grade apps that ship to millions of users.
+        </p>
+        <div class="hero-meta">
+          <span>Swift · SwiftUI · Objective-C</span>
+          <span>SDK Architecture</span>
+          <span>UPI & Payments</span>
+          <span>Notifications & Analytics</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Get in touch
+          </button>
+          <a class="btn-ghost" href="https://github.com/maheshbijapur" target="_blank" rel="noreferrer">
+            View GitHub
+          </a>
+        </div>
+        <div class="hero-footnote">
+          Currently exploring senior iOS / SDK / platform roles where reliability, architecture and developer experience matter.
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="hero-side-title">Quick snapshot</div>
+        <p class="hero-side-item">
+          Experience: <span>10+ years (iOS)</span>
+        </p>
+        <p class="hero-side-item">
+          Domains: <span>MarTech, FinTech, Healthcare, Insurance</span>
+        </p>
+        <p class="hero-side-item">
+          Current focus: <span>SDK design, Swift Concurrency, secure payments, platform reliability</span>
+        </p>
+        <p class="hero-side-item">
+          Location: <span>Bangalore, India</span>
+        </p>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2 class="section-title">ABOUT</h2>
+        <span class="section-subtitle">Who I am as an engineer</span>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <p>
+            I specialize in building <strong>enterprise-grade iOS applications and SDKs</strong> with a focus on reliability,
+            performance and developer experience. My background ranges from <strong>Adobe Marketo’s mobile engagement SDK</strong>
+            to <strong>UPI/QR payments at JioMoney</strong>, with experience spanning iOS, backend-integrated features,
+            notifications, and analytics.
+          </p>
+          <br />
+          <p>
+            I enjoy working on problems where <strong>mobile clients, SDKs and backend systems intersect</strong>—event pipelines,
+            push delivery, transaction flows, and multi-team debugging. I like being the person who can trace an issue from
+            the device to the API and back, and then design a cleaner abstraction for it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="section-header">
+        <h2 class="section-title">EXPERIENCE</h2>
+        <span class="section-subtitle">Recent work</span>
+      </div>
+
+      <!-- Adobe -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Lead iOS Engineer · Adobe Marketo (via GlobalLogic)</div>
+            <div class="card-meta">2015 – Present · Bangalore & Remote</div>
+          </div>
+          <div class="card-meta">iOS · SDK · Notifications · Analytics</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag">Swift / Obj-C</span>
+          <span class="tag">Swift Concurrency</span>
+          <span class="tag">SDK Architecture</span>
+          <span class="tag">APNS / FCM</span>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Architected and built the <strong>Marketo iOS Engagement SDK from scratch</strong> (analytics, push, in-app messaging).</li>
+            <li>Defined module boundaries, event pipelines, lifecycle & concurrency model; improved integration time by <strong>30–40%</strong>.</li>
+            <li>Led <strong>Objective-C → Swift migration</strong>, reducing crash rate by ~<strong>40%</strong> and improving maintainability.</li>
+            <li>Improved push delivery reliability by ~<strong>25%</strong> through APNS HTTP/2, FCM v1 and better retry/backoff design.</li>
+            <li>Reduced memory footprint by ~<strong>18%</strong> using Instruments, retain-cycle removal and object lifecycle tuning.</li>
+            <li>Worked with Python/Django & Celery teams on campaign workers, metadata APIs and monitoring flows.</li>
+            <li>Acted as <strong>technical owner</strong> for iOS SDK roadmap, releases, code quality and cross-team debugging.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- JioMoney -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Senior iOS Engineer · JioMoney UPI & QR Payments</div>
+            <div class="card-meta">2012 – 2015 · Bangalore</div>
+          </div>
+          <div class="card-meta">FinTech · UPI · Security</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag">UPI / BharatQR</span>
+          <span class="tag">Device Binding</span>
+          <span class="tag">Fraud Reduction</span>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Built and maintained <strong>UPI & QR payment flows</strong> handling 5M+ monthly transactions at ~<strong>99.8%</strong> success rate.</li>
+            <li>Integrated NPCI SDKs & BharatQR; improved transaction reliability and reduced failures by ~<strong>40%</strong>.</li>
+            <li>Implemented device binding, keychain-based secure storage, fraud heuristics → ~<strong>35%</strong> reduction in fraud cases.</li>
+            <li>Improved average transaction time by ~<strong>25%</strong> with better retries, fallback paths and UI flow optimizations.</li>
+            <li>Owned mandates, QR flows and secure login end-to-end in collaboration with backend, fraud and product teams.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Span -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">iOS Engineer · Span Infotech (Tietoevry)</div>
+            <div class="card-meta">2013 – 2015 · Bangalore</div>
+          </div>
+          <div class="card-meta">Healthcare & Insurance</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag">Offline-first</span>
+          <span class="tag">CoreData</span>
+          <span class="tag">BLE / iBeacon</span>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Delivered iOS apps for healthcare & insurance use cases with <strong>offline-first CoreData architectures</strong>.</li>
+            <li>Implemented secure login, token management and field-ready sync flows.</li>
+            <li>Built BLE/iBeacon-based proximity features and stability improvements for low-signal environments.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="section-header">
+        <h2 class="section-title">SKILLS</h2>
+        <span class="section-subtitle">Tech I use regularly</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">iOS & SDK</div>
+          <div class="card-body">
+            <ul>
+              <li>Swift, SwiftUI, UIKit, Objective-C, Swift Concurrency, Combine</li>
+              <li>SDK design, modularization, API surface design, versioning & diagnostics</li>
+              <li>App lifecycle, background tasks, multi-scene behavior, performance tuning</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Backend & Platforms</div>
+          <div class="card-body">
+            <ul>
+              <li>Python, Django, Django REST, Celery, RabbitMQ, MySQL (SDK-facing backend pieces)</li>
+              <li>API design, campaign workers, metadata/config services, basic monitoring flows</li>
+              <li>CI/CD with Jenkins, GitHub Actions, Azure DevOps, Firebase Crashlytics/Analytics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 12px;">
+        <div class="card">
+          <div class="card-title">FinTech & Security</div>
+          <div class="card-body">
+            <ul>
+              <li>UPI, BharatQR, PSP flows, transaction reliability</li>
+              <li>Device binding, keychain storage, fraud heuristics, secure PIN handling</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Core Strengths</div>
+          <div class="card-body">
+            <ul>
+              <li>SDK architecture & platform thinking</li>
+              <li>System-level debugging & reliability engineering</li>
+              <li>Performance optimization & concurrency design</li>
+              <li>Cross-team collaboration and mentoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2 class="section-title">PROJECTS</h2>
+        <span class="section-subtitle">Selected work</span>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Marketo iOS Engagement SDK</div>
+          <div class="card-meta">Enterprise SDK · Adobe</div>
+        </div>
+        <div class="card-body">
+          <p>
+            Modular iOS SDK providing analytics, push and in-app messaging used by multiple enterprise apps.
+          </p>
+          <ul>
+            <li>Built from scratch with clean module boundaries and diagnostics tooling.</li>
+            <li>Improved integration time by 30–40% and reduced crashes by ~40% after Swift migration.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">JioMoney UPI & QR</div>
+          <div class="card-meta">FinTech · Payments</div>
+        </div>
+        <div class="card-body">
+          <p>
+            High-throughput UPI & QR payment flows with strong reliability and risk controls.
+          </p>
+          <ul>
+            <li>5M+ monthly transactions at ~99.8% success rate.</li>
+            <li>Reduced fraud by ~35% with device binding and validation rules.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Technical Prototypes</div>
+          <div class="card-meta">AI · Geo · Tooling</div>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li><strong>AI Travel Assistant</strong> – SwiftUI + LLM APIs for context-aware travel suggestions.</li>
+            <li><strong>Geo Tracking Engine</strong> – movement prediction, route smoothing, background handling.</li>
+            <li><strong>SDK Diagnostics Tool</strong> – event replay & payload inspection to accelerate debugging.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2 class="section-title">CONTACT</h2>
+        <span class="section-subtitle">Let’s talk</span>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <p>
+            If you’d like to discuss a role, an SDK/platform problem, or just compare notes on iOS architecture,
+            feel free to reach out.
+          </p>
+          <br />
+          <p><strong>Email:</strong> <a href="mailto:jobs.mahesh1020@gmail.com">jobs.mahesh1020@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mahesh-b-657b3b3a" target="_blank" rel="noreferrer">linkedin.com/in/mahesh-b-657b3b3a</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/maheshbijapur" target="_blank" rel="noreferrer">github.com/maheshbijapur</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> · Built with HTML & CSS · Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
